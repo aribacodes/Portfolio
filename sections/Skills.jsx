@@ -9,124 +9,90 @@ import {
 } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 
+import "./Skills.css";
+
 const skills = [
   {
     name: "HTML5",
-    icon: <FaHtml5 />,
-    color: "text-orange-500",
-    level: "Advanced",
+    icon: FaHtml5,
   },
   {
     name: "CSS3",
-    icon: <FaCss3Alt />,
-    color: "text-blue-500",
-    level: "Advanced",
+    icon: FaCss3Alt,
   },
   {
     name: "JavaScript",
-    icon: <FaJs />,
-    color: "text-yellow-400",
-    level: "Intermediate",
+    icon: FaJs,
   },
   {
     name: "React",
-    icon: <FaReact />,
-    color: "text-cyan-400",
-    level: "Intermediate",
+    icon: FaReact,
   },
   {
     name: "Tailwind CSS",
-    icon: <RiTailwindCssFill />,
-    color: "text-sky-400",
-    level: "Advanced",
+    icon: RiTailwindCssFill,
   },
   {
     name: "Git",
-    icon: <FaGitAlt />,
-    color: "text-orange-600",
-    level: "Intermediate",
+    icon: FaGitAlt,
   },
   {
     name: "GitHub",
-    icon: <FaGithub />,
-    color: "text-white",
-    level: "Intermediate",
+    icon: FaGithub,
   },
 ];
 
 const Skills = () => {
   return (
-    <section
-      id="skills"
-      className="py-28 px-6 lg:px-8"
-    >
-      <div className="max-w-7xl mx-auto">
-
-        {/* Heading */}
+    <section id="skills" className="skills-section">
+      <div className="skills-container">
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          className="skills-heading"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="uppercase tracking-[6px] text-violet-400 text-sm font-medium">
-            Skills
+          <span className="skills-label">
+            Tools of the trade
+          </span>
+
+          <p>
+            Technologies I use to turn ideas into polished,
+            responsive digital experiences.
           </p>
-
-          <h2 className="mt-4 text-5xl md:text-6xl font-bold">
-            Technologies
-            <span className="block text-violet-500">
-              I Work With
-            </span>
-          </h2>
-
-          <p className="mt-6 max-w-3xl mx-auto text-slate-400 leading-8">
-            I use modern frontend technologies to create responsive,
-            beautiful and high-performance websites with clean code and
-            smooth user experiences.
-          </p>
-
         </motion.div>
 
-        {/* Skills Grid */}
+        <motion.div
+          className="skills-list"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+        >
+          {skills.map((skill, index) => {
+            const Icon = skill.icon;
 
-        <div className="mt-20 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                delay: index * 0.08,
-              }}
-              whileHover={{
-                y: -10,
-                scale: 1.03,
-              }}
-              className="group rounded-3xl border border-white/10 bg-[#151B2F] p-8 text-center shadow-lg transition-all duration-500 hover:shadow-violet-500/20"
-            >
-
-              <div
-                className={`text-6xl ${skill.color} transition-transform duration-500 group-hover:scale-110`}
+            return (
+              <motion.div
+                key={skill.name}
+                className="skill-item"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.06,
+                }}
               >
-                {skill.icon}
-              </div>
+                <Icon className="skill-icon" />
 
-              <h3 className="mt-6 text-xl font-semibold">
-                {skill.name}
-              </h3>
-
-              <p className="mt-2 text-sm text-slate-400">
-                {skill.level}
-              </p>
-
-            </motion.div>
-          ))}
-
-        </div>
+                <span>{skill.name}</span>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
       </div>
     </section>

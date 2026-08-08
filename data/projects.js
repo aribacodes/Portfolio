@@ -1,101 +1,89 @@
+import sugarbloom from "../assets/images/sugarbloom.png";
 import cafe from "../assets/images/cafe.png";
 import boutique from "../assets/images/boutique.png";
 import salon from "../assets/images/salon.png";
 import gym from "../assets/images/gym.png";
+
 const projects = [
+  {
+    id: 1,
+    title: "Sugar Bloom",
+    category: "Full Stack",
+    image: sugarbloom,
 
-{
-id:1,
+    description:
+      "A complete bakery website with product browsing, cart and checkout functionality, order management, and an admin dashboard.",
 
-title:"Cafe Website",
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
 
-image:cafe,
+    demo: "https://sugar-bloom-topaz.vercel.app/",
+    github: "https://github.com/aribacodes/Sugar-Bloom",
+  },
 
-category:"Restaurant",
+  {
+    id: 2,
+    title: "Cafe Website",
+    category: "Restaurant",
+    image: cafe,
 
-description:
-"Elegant and responsive cafe website featuring menu, reservation system, gallery, testimonials and contact page.",
+    description:
+      "An elegant digital experience for a modern café, featuring a menu, reservations, gallery, testimonials, and contact information.",
 
-tech:[
-"HTML",
-"CSS",
-"JavaScript"
-],
+    tech: ["HTML", "CSS", "JavaScript"],
 
-demo:"#",
+    demo: "#",
+    github: "#",
+  },
 
-github:"#"
-},
+  {
+    id: 3,
+    title: "Boutique Website",
+    category: "Fashion",
+    image: boutique,
 
-{
-id:2,
+    description:
+      "A refined boutique website designed to showcase collections, offers, and products through a modern visual experience.",
 
-title:"Boutique Website",
+    tech: ["HTML", "CSS", "JavaScript"],
 
-image:boutique,
+    demo: "#",
+    github: "#",
+  },
 
-category:"Fashion",
+  {
+    id: 4,
+    title: "Salon Website",
+    category: "Beauty",
+    image: salon,
 
-description:
-"Luxury boutique website with modern product showcase, collections, offers and beautiful animations.",
+    description:
+      "A polished salon website concept featuring service showcases, gallery, testimonials and appointment booking.",
 
-tech:[
-"HTML",
-"CSS",
-"JavaScript"
-],
+    tech: ["HTML", "CSS", "JavaScript"],
 
-demo:"#",
+    demo: "#",
+    github: "#",
+  },
 
-github:"#"
-},
+  {
+    id: 5,
+    title: "Gym Website",
+    category: "Fitness",
+    image: gym,
 
-{
-id:3,
+    description:
+      "A modern fitness website showcasing trainers, workout plans, membership options, and pricing.",
 
-title:"Salon Website",
+    tech: ["HTML", "CSS", "JavaScript"],
 
-image:salon,
-
-category:"Beauty",
-
-description:
-"Premium salon website including appointment booking, pricing, testimonials and services.",
-
-tech:[
-"HTML",
-"CSS",
-"JavaScript"
-],
-
-demo:"#",
-
-github:"#"
-},
-
-{
-id:4,
-
-title:"Gym Website",
-
-image:gym,
-
-category:"Fitness",
-
-description:
-"Modern fitness website with trainer profiles, workout plans, pricing and membership section.",
-
-tech:[
-"HTML",
-"CSS",
-"JavaScript"
-],
-
-demo:"#",
-
-github:"#"
-}
-
-]
+    demo: "#",
+    github: "#",
+  },
+];
 
 export default projects;

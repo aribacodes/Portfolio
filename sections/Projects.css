@@ -1,0 +1,135 @@
+.projects-section {
+  position: relative;
+  z-index: 2;
+
+  padding: 120px 0 70px;
+
+  border-top: 1px solid var(--border);
+}
+
+.projects-container {
+  width: min(var(--container), calc(100% - 80px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.projects-intro {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+
+  column-gap: 70px;
+
+  margin-bottom: 70px;
+}
+
+.projects-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.projects-label span {
+  width: 28px;
+  height: 1px;
+
+  background: var(--accent);
+}
+
+.projects-intro h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(60px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.projects-intro h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.projects-intro p {
+  grid-column: 2;
+
+  max-width: 500px;
+
+  margin-top: 30px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   PROJECT LIST
+   ========================================================= */
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 80px 0;
+    overflow: hidden;
+  }
+
+  .projects-container {
+    width: calc(100% - 36px);
+    max-width: 100%;
+  }
+
+  .projects-intro {
+    display: block;
+    width: 100%;
+    margin-bottom: 55px;
+  }
+
+  .projects-label {
+    margin-bottom: 25px;
+    font-size: 9px;
+  }
+
+  .projects-intro h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(46px, 14vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+
+    overflow-wrap: break-word;
+  }
+
+  .projects-intro p {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 28px;
+
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .projects-list {
+    width: 100%;
+  }
+}

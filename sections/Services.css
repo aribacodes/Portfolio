@@ -1,0 +1,262 @@
+.services-section {
+  position: relative;
+  z-index: 2;
+
+  padding: 150px 0;
+  border-top: 1px solid var(--border);
+}
+
+.services-container {
+  width: min(var(--container), calc(100% - 80px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.services-intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 80px;
+  row-gap: 30px;
+
+  margin-bottom: 100px;
+}
+
+.services-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--accent);
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.services-label span {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.services-heading {
+  grid-column: 2;
+
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(58px, 7vw, 105px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.services-heading em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.services-intro-text {
+  grid-column: 2;
+
+  max-width: 520px;
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   SERVICE LIST
+   ========================================================= */
+
+.services-list {
+  border-top: 1px solid var(--border);
+}
+
+.service-item {
+  display: grid;
+  grid-template-columns: 90px 1fr 60px;
+  align-items: center;
+  gap: 30px;
+
+  min-height: 130px;
+
+  border-bottom: 1px solid var(--border);
+
+  transition:
+    padding 0.4s ease,
+    background 0.4s ease;
+}
+
+.service-item:hover {
+  padding: 0 24px;
+
+  background: var(--surface);
+}
+
+.service-number {
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.service-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.service-content h3 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.service-content p {
+  max-width: 400px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.service-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  color: var(--accent);
+
+  font-size: 17px;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.service-item:hover .service-arrow {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--background);
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .services-section {
+    padding: 110px 0;
+  }
+
+  .services-container {
+    width: calc(100% - 48px);
+  }
+
+  .services-intro {
+    display: block;
+    margin-bottom: 70px;
+  }
+
+  .services-heading {
+    margin-top: 30px;
+  }
+
+  .services-intro-text {
+    margin-top: 30px;
+  }
+
+  .service-item {
+    grid-template-columns: 55px 1fr 50px;
+  }
+
+  .service-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .service-content p {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-section {
+    padding: 90px 0;
+  }
+
+  .services-container {
+    width: calc(100% - 36px);
+  }
+
+  .services-label {
+    font-size: 9px;
+  }
+
+  .services-heading {
+    margin-top: 24px;
+    font-size: clamp(50px, 14vw, 72px);
+  }
+
+  .services-intro-text {
+    font-size: 14px;
+  }
+
+  .service-item {
+    grid-template-columns: 35px 1fr 40px;
+    gap: 12px;
+
+    min-height: 130px;
+  }
+
+  .service-item:hover {
+    padding: 0 10px;
+  }
+
+  .service-number {
+    font-size: 9px;
+  }
+
+  .service-content h3 {
+     font-size: clamp(28px, 3.5vw, 46px);
+  }
+
+  .service-content p {
+    font-size: 12px;
+  }
+
+  .service-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 14px;
+  }
+}

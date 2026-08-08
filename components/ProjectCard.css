@@ -1,0 +1,285 @@
+.project-card {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 70px;
+
+  padding: 70px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.project-card-reversed {
+  grid-template-columns: 0.65fr 1.35fr;
+}
+
+.project-card-reversed .project-image-link {
+  order: 2;
+}
+
+.project-card-reversed .project-content {
+  order: 1;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.project-image-link {
+  display: block;
+
+  overflow: hidden;
+
+  background: var(--surface);
+}
+
+.project-image {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+}
+
+.project-image-link:hover img {
+  transform: scale(1.035);
+
+  filter: brightness(0.7);
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: rgba(15, 13, 12, 0.25);
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+}
+
+.project-image-link:hover .project-image-overlay {
+  opacity: 1;
+}
+
+.project-overlay-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+
+  font-size: 16px;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.project-topline {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 28px;
+}
+
+.project-number {
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.project-category {
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-content h3 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: clamp(42px, 4.5vw, 66px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.project-description {
+  max-width: 420px;
+
+  margin: 25px 0 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.project-bottom {
+  margin-top: 40px;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 25px;
+}
+
+.project-tech span {
+  padding: 6px 9px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  transition: color 0.3s ease;
+}
+
+.project-link svg {
+  width: 13px;
+  height: 13px;
+}
+
+.project-link:hover {
+  color: var(--text);
+}
+
+.project-link-primary {
+  color: var(--accent);
+}
+
+.project-link-primary:hover {
+  color: var(--accent-light);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .project-card,
+  .project-card-reversed {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .project-card-reversed .project-image-link,
+  .project-card-reversed .project-content {
+    order: initial;
+  }
+
+  .project-content {
+    max-width: 700px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .project-card {
+    padding: 50px 0;
+
+    gap: 28px;
+  }
+
+  .project-topline {
+    margin-bottom: 20px;
+  }
+
+  .project-content h3 {
+    font-size: 42px;
+  }
+
+  .project-description {
+    margin-top: 18px;
+
+    font-size: 12px;
+  }
+
+  .project-bottom {
+    margin-top: 28px;
+  }
+
+  .project-tech {
+    margin-bottom: 20px;
+  }
+}

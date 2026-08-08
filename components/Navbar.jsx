@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
+import "./Navbar.css";
+
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Work", href: "#projects" },
   { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
+  { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -21,60 +22,50 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <motion.header
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.7 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#070B14]/85 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent"
-      }`}
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
     >
-      <div className="max-w-7xl mx-auto h-20 flex items-center justify-between px-6 lg:px-8">
+      <div className="navbar-inner">
 
-        {/* Logo */}
-
-        <a
-          href="#home"
-          className="text-3xl font-bold tracking-wide"
-        >
-          <span className="text-white">
-            A
-          </span>
-
-          <span className="text-violet-500">
-            .
-          </span>
+        <a href="#home" className="navbar-logo" onClick={closeMenu}>
+          ARIBA<span>.</span>
         </a>
 
-        {/* Desktop */}
-
-        <nav className="hidden md:flex items-center gap-10">
-
+        <nav className="navbar-links">
           {navLinks.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="relative text-sm text-slate-300 hover:text-white transition group"
-            >
+            <a key={item.name} href={item.href} className="navbar-link">
               {item.name}
-
-              <span className="absolute left-0 -bottom-2 w-0 h-[2px] bg-violet-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
-
         </nav>
 
-        {/* Mobile */}
+        <a href="#contact" className="navbar-cta">
+          Let's work
+          <span>↗</span>
+        </a>
 
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-3xl md:hidden"
+          type="button"
+          className="navbar-menu-button"
+          onClick={() => setMenuOpen((previous) => !previous)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt3 />}
         </button>
@@ -82,35 +73,42 @@ const Navbar = () => {
       </div>
 
       <AnimatePresence>
-
         {menuOpen && (
-
           <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            className="md:hidden bg-[#101826] border-t border-white/10"
+            className="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35 }}
           >
-
-            {navLinks.map((item) => (
-
-              <a
+            {navLinks.map((item, index) => (
+              <motion.a
                 key={item.name}
                 href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="block px-6 py-5 border-b border-white/5 text-slate-300 hover:text-violet-400 transition"
+                onClick={closeMenu}
+                className="mobile-menu-link"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: index * 0.05,
+                  duration: 0.3,
+                }}
               >
+                <span>0{index + 1}</span>
                 {item.name}
-              </a>
-
+              </motion.a>
             ))}
 
+            <a
+              href="#contact"
+              onClick={closeMenu}
+              className="mobile-menu-cta"
+            >
+              Let's work <span>↗</span>
+            </a>
           </motion.div>
-
         )}
-
       </AnimatePresence>
-
     </motion.header>
   );
 };

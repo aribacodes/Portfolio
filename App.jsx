@@ -1,19 +1,35 @@
+import "./App.css";
+
 import Background from "./components/Background";
 import Navbar from "./components/Navbar";
+
 import Hero from "./sections/Hero";
-import About from "./sections/About";
 import Projects from "./sections/Projects";
+import About from "./sections/About";
+import Services from "./sections/Services";
+
 import Skills from "./sections/Skills";
+import Contact from "./sections/Contact";
+import Footer from "./sections/Footer";
 
 function App() {
   return (
-    <div className="relative min-h-screen">
+    <div className="app">
       <Background />
+
       <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
+
+      <main>
+        <Hero />
+        <Projects />
+        <About />
+        <Services />
+        
+        <Skills />
+        <Contact />
+      </main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,78 +1,90 @@
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
-const ProjectCard = ({ project }) => {
+import "./ProjectCard.css";
+
+const ProjectCard = ({ project, index }) => {
+  const isReversed = index % 2 !== 0;
+
   return (
     <motion.article
+      className={`project-card ${
+        isReversed ? "project-card-reversed" : ""
+      }`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -10 }}
-      transition={{ duration: 0.4 }}
-      className="group overflow-hidden rounded-3xl border border-white/10 bg-[#151B2F] shadow-lg hover:shadow-violet-500/20 transition-all duration-500"
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
-      {/* Project Image */}
+      {/* Image */}
 
-      <div className="overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      </div>
+      <a
+        href={project.demo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-image-link"
+        aria-label={`View ${project.title}`}
+      >
+        <div className="project-image">
+          <img
+            src={project.image}
+            alt={`${project.title} website`}
+          />
+
+          <div className="project-image-overlay">
+            <span>View project</span>
+            <span className="project-overlay-arrow">
+              ↗
+            </span>
+          </div>
+        </div>
+      </a>
 
       {/* Content */}
 
-      <div className="p-8">
+      <div className="project-content">
 
-        <span className="inline-block rounded-full bg-violet-600/10 px-4 py-1 text-xs font-medium tracking-wide text-violet-400">
-          {project.category}
-        </span>
+        <div className="project-topline">
+          <span className="project-number">
+            {String(index + 1).padStart(2, "0")}
+          </span>
 
-        <h2 className="mt-5 text-3xl font-bold">
-          {project.title}
-        </h2>
+          <span className="project-category">
+            {project.category}
+          </span>
+        </div>
 
-        <p className="mt-5 leading-8 text-slate-400">
+        <h3>{project.title}</h3>
+
+        <p className="project-description">
           {project.description}
         </p>
 
-        {/* Tech Stack */}
+        <div className="project-bottom">
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-sm text-violet-300"
+          <div className="project-tech">
+            {project.tech.map((tech) => (
+              <span key={tech}>{tech}</span>
+            ))}
+          </div>
+
+          <div className="project-links">
+
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link project-link-primary"
             >
-              {tech}
-            </span>
-          ))}
-        </div>
+              Live site
+              <FiExternalLink />
+            </a>
 
-        {/* Buttons */}
 
-        <div className="mt-10 flex gap-4">
-
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3 font-medium transition hover:bg-violet-500"
-          >
-            <FiExternalLink />
-            Live Demo
-          </a>
-
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-violet-500 px-6 py-3 font-medium transition hover:bg-violet-600/10"
-          >
-            <FiGithub />
-            GitHub
-          </a>
+          </div>
 
         </div>
 

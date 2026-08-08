@@ -1,4 +1,7 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
+
 import {
   FaGithub,
   FaLinkedin,
@@ -6,145 +9,275 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 
-const Contact = () => {
-  return (
-    <section
-      id="contact"
-      className="py-28 px-6 lg:px-8"
-    >
-      <div className="max-w-7xl mx-auto">
+import "./Contact.css";
 
-        {/* Heading */}
+const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setSending(true);
+    setError(false);
+
+    try {
+      await emailjs.sendForm(
+        "service_a37t2tb",
+        "template_pqeeo3d",
+        event.target,
+        "LA_MZSZB2klcU1IsA"
+      );
+
+      setSubmitted(true);
+      event.target.reset();
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <section id="contact" className="contact-section">
+      <div className="contact-container">
+
+        {/* Intro */}
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          className="contact-intro"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
         >
-          <p className="uppercase tracking-[6px] text-violet-400 text-sm font-medium">
-            Contact
-          </p>
+          <div className="contact-label">
+            <span />
+            Have a project in mind?
+          </div>
 
-          <h2 className="mt-4 text-5xl md:text-6xl font-bold">
-            Let's Build
-            <span className="block text-violet-500">
-              Something Amazing
-            </span>
+          <h2>
+            Let's make something
+            <br />
+            <em>worth remembering.</em>
           </h2>
-
-          <p className="mt-6 max-w-3xl mx-auto text-slate-400 leading-8">
-            Have a project in mind? Let's connect and create a modern,
-            responsive website for your business.
-          </p>
-
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mt-20">
+        {/* Main Contact Area */}
+
+        <div className="contact-content">
 
           {/* Left */}
 
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            className="contact-message"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-[#151B2F] border border-white/10 p-10"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7 }}
           >
-
-            <h3 className="text-3xl font-bold">
-              Get In Touch
-            </h3>
-
-            <p className="text-slate-400 mt-5 leading-8">
-              I'm currently available for freelance projects.
-              Feel free to reach out through email or social media.
+            <p>
+              Whether you're starting a new business, refreshing an
+              existing website, or simply have an idea you'd like to
+              bring to life, I'd love to hear about it.
             </p>
 
-            <div className="space-y-6 mt-10">
+            <a
+              href="mailto:ariba.a.work@gmail.com"
+              className="contact-email"
+            >
+              ariba.a.work@gmail.com
+              <span>↗</span>
+            </a>
 
-              <div>
-                <p className="text-violet-400 text-sm">
-                  Email
-                </p>
+            <div className="contact-socials">
 
-                <a
-                  href="mailto:your@email.com"
-                  className="text-lg"
-                >
-                  your@email.com
-                </a>
-              </div>
+  <a
+    href="https://github.com/aribacodes"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+  >
+    <FaGithub />
+  </a>
 
-              <div>
-                <p className="text-violet-400 text-sm">
-                  Location
-                </p>
+  <a
+    href="https://www.linkedin.com/in/ariba-abbasi-cybercodes"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedin />
+  </a>
 
-                <p>Kota, Rajasthan, India</p>
-              </div>
+  
 
-            </div>
-
-            <div className="flex gap-5 mt-10 text-3xl">
-
-              <a href="#">
-                <FaGithub />
-              </a>
-
-              <a href="#">
-                <FaLinkedin />
-              </a>
-
-              <a href="#">
-                <FaInstagram />
-              </a>
-
-              <a href="mailto:your@email.com">
-                <FaEnvelope />
-              </a>
-
-            </div>
+</div>
 
           </motion.div>
 
-          {/* Right */}
+          {/* Form */}
 
           <motion.form
-            initial={{ opacity: 0, x: 60 }}
+            className="contact-form"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-[#151B2F] border border-white/10 p-10 space-y-6"
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7 }}
           >
 
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-4 rounded-xl bg-[#101826] outline-none"
-            />
+            <div className="form-field">
+              <label htmlFor="name">
+                Your name
+              </label>
 
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-4 rounded-xl bg-[#101826] outline-none"
-            />
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                required
+              />
+            </div>
 
-            <textarea
-              rows="6"
-              placeholder="Tell me about your project..."
-              className="w-full p-4 rounded-xl bg-[#101826] outline-none resize-none"
-            />
+            <div className="form-field">
+              <label htmlFor="email">
+                Email address
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="message">
+                Tell me about your project
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell me a little about your project..."
+                required
+              />
+            </div>
 
             <button
-              className="w-full bg-violet-600 hover:bg-violet-500 py-4 rounded-xl transition"
+              type="submit"
+              className="contact-submit"
+              disabled={sending}
             >
-              Send Message
+              {sending ? "Sending..." : "Start a conversation"}
+
+              <span>
+                {sending ? "..." : "↗"}
+              </span>
             </button>
 
           </motion.form>
 
         </div>
-
       </div>
+
+      {/* Success Notification */}
+
+      <AnimatePresence>
+        {submitted && (
+          <motion.div
+            className="contact-success"
+            initial={{
+              opacity: 0,
+              y: 30,
+              x: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+            }}
+            transition={{
+              duration: 0.35,
+            }}
+          >
+            <div className="success-dot">
+              ✓
+            </div>
+
+            <div>
+              <strong>
+                Thanks for reaching out!
+              </strong>
+
+              <p>
+                Your message has been sent. I'll get back to you soon.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Error Notification */}
+
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            className="contact-success"
+            initial={{
+              opacity: 0,
+              y: 30,
+              x: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+            }}
+            transition={{
+              duration: 0.35,
+            }}
+          >
+            <div className="success-dot">
+              !
+            </div>
+
+            <div>
+              <strong>
+                Something went wrong.
+              </strong>
+
+              <p>
+                Please try again or contact me directly by email.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 };
