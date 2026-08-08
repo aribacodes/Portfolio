@@ -36,7 +36,7 @@ const projects = [
 
     tech: ["HTML", "CSS", "JavaScript"],
 
-    demo: "#",
+    demo: "https://veloura-cafe-demo.netlify.app/",
     github: "#",
   },
 
@@ -66,7 +66,7 @@ const projects = [
 
     tech: ["HTML", "CSS", "JavaScript"],
 
-    demo: "#",
+    demo: "https://lushe-salon-demo.netlify.app/",
     github: "#",
   },
 
@@ -81,7 +81,7 @@ const projects = [
 
     tech: ["HTML", "CSS", "JavaScript"],
 
-    demo: "#",
+    demo: "https://forge-gym-demo0.netlify.app/",
     github: "#",
   },
 ];
