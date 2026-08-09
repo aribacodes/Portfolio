@@ -363,11 +363,189 @@
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-  .contact-success {
-    right: 20px;
-    bottom: 20px;
 
-    width: calc(100% - 40px);
-  }
+
+/* =========================================================
+   STARTUP OFFER
+========================================================= */
+
+.startup-offer {
+    width: 100%;
+
+    margin: 45px 0 70px;
+    padding: 28px 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    background: var(--rose);
+
+    color: white;
+
+    box-sizing: border-box;
+}
+
+.startup-offer-content {
+    min-width: 0;
+}
+
+.startup-offer-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #f3dccb;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+}
+
+.startup-offer h3 {
+    margin: 0 0 8px;
+
+    font-family: "Fraunces", serif;
+
+    font-size: clamp(30px, 3vw, 42px);
+
+    line-height: 1;
+
+    letter-spacing: -0.03em;
+}
+
+.startup-offer h3 em {
+    color: #fff0df;
+}
+
+.startup-offer p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.startup-offer-note {
+    display: block;
+
+    margin-top: 6px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 11px;
+}
+
+.startup-offer-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 18px;
+
+    background: rgba(255, 248, 239, 0.10);
+    border: 1px solid rgba(255, 248, 239, 0.45);
+
+    color: #fff8ef;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.startup-offer-link:hover {
+    background: rgba(255, 248, 239, 0.10);
+
+    border-color: var(--terracotta);
+
+    color: #f2b39b;
+
+    transform: translateY(-3px);
+}
+
+.startup-offer-link span {
+    color: inherit;
+
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+
+    .startup-offer {
+        width: 100%;
+        margin: 40px 0 55px;
+        padding: 32px 22px;
+
+        display: block;
+
+        box-sizing: border-box;
+    }
+
+    .startup-offer-content {
+        width: 100%;
+    }
+
+    .startup-offer-label {
+        margin-bottom: 14px;
+
+        font-size: 8px;
+        letter-spacing: 0.18em;
+    }
+
+    .startup-offer h3 {
+        max-width: 100%;
+
+        margin: 0 0 14px;
+
+        font-size: 38px;
+        line-height: 0.95;
+    }
+
+    .startup-offer p {
+        max-width: 100%;
+
+        margin: 0;
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .startup-offer-note {
+        max-width: 100%;
+
+        margin-top: 10px;
+
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .startup-offer-link {
+        display: inline-flex;
+
+        width: auto;
+
+        margin-top: 24px;
+
+        padding: 13px 17px;
+
+        box-sizing: border-box;
+
+        font-size: 8px;
+    }
 }

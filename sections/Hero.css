@@ -361,3 +361,17 @@
     margin-top: 40px;
   }
 }
+
+.hero-title {
+    overflow: hidden;
+}
+
+.hero-word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.hero-accent {
+    color: var(--accent);
+    font-style: italic;
+}

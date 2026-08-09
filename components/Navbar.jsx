@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="navbar-inner">
 
         <a href="#home" className="navbar-logo" onClick={closeMenu}>
-          ARIBA<span>.</span>
+          ARIBA ABBASI<span>.</span>
         </a>
 
         <nav className="navbar-links">

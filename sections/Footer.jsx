@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#home" className="footer-logo">
-              ARIBA<span>.</span>
+              ARIBA ABBASI<span>.</span>
             </a>
 
             <p>

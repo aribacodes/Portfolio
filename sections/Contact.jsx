@@ -72,7 +72,46 @@ const Contact = () => {
             <em>worth remembering.</em>
           </h2>
         </motion.div>
+        {/* Startup Offer */}
 
+<motion.div
+  className="startup-offer"
+  initial={{ opacity: 0, y: 25 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.25 }}
+  transition={{ duration: 0.7 }}
+>
+  <div className="startup-offer-content">
+
+    <span className="startup-offer-label">
+      FOR NEW BEGINNINGS
+    </span>
+
+    <h3>
+      New business?
+      <em> Start here.</em>
+    </h3>
+
+    <p>
+      Special pricing for startups, student founders
+      and young businesses.
+    </p>
+
+    <span className="startup-offer-note">
+      Your first website shouldn't be your biggest expense.
+    </span>
+
+  </div>
+
+  <a
+    href="#contact-form"
+    className="startup-offer-link"
+  >
+    Let's build something
+    <span>↗</span>
+  </a>
+
+</motion.div>
         {/* Main Contact Area */}
 
         <div className="contact-content">
@@ -129,6 +168,7 @@ const Contact = () => {
           {/* Form */}
 
           <motion.form
+            id="contact-form"
             className="contact-form"
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}

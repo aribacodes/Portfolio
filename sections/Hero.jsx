@@ -16,20 +16,106 @@ const Hero = () => {
           Freelance Web Designer & Developer
         </motion.div>
 
-        <motion.h1
-          className="hero-title"
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.15,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          Websites that make
-          <br />
-          <span>your business</span> stand out.
-        </motion.h1>
+      <motion.h1
+  className="hero-title"
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  }}
+>
+  <motion.span
+    className="hero-word"
+    variants={{
+      hidden: { opacity: 0, y: 35 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      },
+    }}
+  >
+    Websites
+  </motion.span>{" "}
+
+  <motion.span
+    className="hero-word"
+    variants={{
+      hidden: { opacity: 0, y: 35 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      },
+    }}
+  >
+    that
+  </motion.span>{" "}
+
+  <motion.span
+    className="hero-word"
+    variants={{
+      hidden: { opacity: 0, y: 35 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      },
+    }}
+  >
+    make
+  </motion.span>
+
+  <br />
+
+  <motion.span
+    className="hero-word hero-accent"
+    variants={{
+      hidden: { opacity: 0, y: 35 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.9,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      },
+    }}
+  >
+    your business
+  </motion.span>{" "}
+
+  <motion.span
+    className="hero-word"
+    variants={{
+      hidden: { opacity: 0, y: 35 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      },
+    }}
+  >
+    stand out.
+  </motion.span>
+</motion.h1>
 
         <div className="hero-bottom">
 
