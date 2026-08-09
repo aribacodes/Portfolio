@@ -51,7 +51,7 @@ const projects = [
 
     tech: ["HTML", "CSS", "JavaScript"],
 
-    demo: "#",
+    demo: "https://meher-boutique-demo.netlify.app/",
     github: "#",
   },
 
